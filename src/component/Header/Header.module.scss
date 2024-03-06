@@ -1,0 +1,43 @@
+header{
+
+
+    .logo{
+        font-weight: 600;
+        font-size: 26px;
+
+    }
+
+    .presentation{
+        margin:50px 0;
+        background: url(./../../assets/banner.jpg) no-repeat;
+        width: 100%;
+        height: 500px;
+        background-size: cover;
+        background-position:center center ;
+        background-blend-mode: multiply ;
+        position: relative;
+       
+    }
+
+    .presentation::after{
+        content: 'Лучшая электроника для вашей семьи';
+        color: antiquewhite;
+        position: absolute;
+        top: 60px;
+        right: 40px;
+        width: 370px;
+        font-size: 40px;
+
+    }
+
+    .presentation::before{
+        content: 'по низкой цен';
+        color: antiquewhite;
+        position: absolute;
+        top: 200px;
+        right: 40px;
+        width: 370px;
+        font-size: 35px;
+
+    }
+}
