@@ -7,6 +7,26 @@ header{
 
     }
 
+    .nav{
+        float: right;
+        list-style: none;
+        li{
+            display: inline;
+            margin-left:25px ;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: opacity 500ms ease;
+        }
+
+        li:hover{
+            opacity: 0.5;
+        }
+
+    }
+
+
+
     .presentation{
         margin:50px 0;
         background: url(./../../assets/banner.jpg) no-repeat;
@@ -16,6 +36,7 @@ header{
         background-position:center center ;
         background-blend-mode: multiply ;
         position: relative;
+        border-radius: 15px;
        
     }
 
@@ -24,18 +45,18 @@ header{
         color: antiquewhite;
         position: absolute;
         top: 60px;
-        right: 40px;
+        right: 5px;
         width: 370px;
         font-size: 40px;
 
     }
 
     .presentation::before{
-        content: 'по низкой цен';
+        content: 'по низкой цене';
         color: antiquewhite;
         position: absolute;
         top: 200px;
-        right: 40px;
+        right: 5px;
         width: 370px;
         font-size: 35px;
 
