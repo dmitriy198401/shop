@@ -1,9 +1,11 @@
 .item{
 width : 30%;
 margin-bottom: 50px;
-background:#73b3c7 ;
+background:#93e2fa ;
 border-radius: 10px;
 overflow: hidden;
+position: relative;
+padding-bottom: 25px;
 
 img{
     width: 100%;
@@ -14,6 +16,25 @@ img{
 img:hover{
     transform: scale(1.05);
 
+}
+.addToCart{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    background:brown ;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 30%;
+    cursor: pointer;
+    font-weight:600 ;
+    color: #ffffff;
+    font-size: 20px;
+    transition: transform 1000ms ease;
+}
+.addToCart:hover{
+    transform: scale(1.5) translateY(-5px);
 }
 
 
