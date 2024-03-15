@@ -1,6 +1,20 @@
 header{
     position: relative;
 
+    .empty{
+        h2{
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+    }
+
+    .summa{
+        float: left;
+        width: 100%;
+        font-weight: 600;
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
 
     .logo{
         font-weight: 600;
@@ -56,6 +70,13 @@ header{
     -moz-box-shadow: -20px 20px 22px 12px rgba(7, 7, 7, 0.23);
     box-shadow: -20px 20px 22px 12px rgba(7, 7, 7, 0.23);
     z-index: 1000;
+    padding: 20px;
+    padding-bottom: 0;
+    border-radius: 10px;
+
+
+
+   
 
   
 
