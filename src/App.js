@@ -1,10 +1,12 @@
 import React from "react";
-import{useState} from "react";
+import{useState, useEffect} from "react";
 import Header from "./component/Header";
 import Items from "./component/Items";
 import Footer from "./component/Footer";
 import "./index.scss";
 import Orders from "./component/Orders";
+import Category from "./component/Category";
+import ShowFullItem from "./component/ShowFullItem";
 
 
 
@@ -17,7 +19,7 @@ export default function App() {
       title:'DODGEE',
       img:'dodgee.png',
       desc:'Смартфон Doogee V Max Classic Black — защищенная модель, разработанная специально для работы в сложных условиях. Корпус, выполненный из алюминия и термопластика, соответствует стандартам IP68, IP69K и MIL-STD-810H — он не боится пыли и погружения под воду на глубину до 1 м, выдерживает воздействие горячей воды, подающейся под давлением, прошел тесты на соответствие военным стандартам США.',
-      category:'nothing',
+      category:'DODGEE',
       price:'35890'
     },
 
@@ -26,7 +28,7 @@ export default function App() {
       title:'Infinix',
       img:'Infinix.png',
       desc:'Смартфон Infinix Note 30 VIP Magic Black (X6710) — модель с AMOLED-экраном диагональю 6,67 дюйма разрешением 2400x1080 пикселей. Высокая яркость 900 кд/м² и частота обновления 120 Гц обеспечивают насыщенное изображение и плавность воспроизведения динамичных сцен в играх и фильмах. За достойную производительность отвечают восьмиядерный процессор Mediatek Dimensity 8050 частотой 3 ГГц и 12 Гб оперативной памяти.',
-      category:'nothing',
+      category:'Infinix',
       price:'32999'
     },
 
@@ -35,7 +37,7 @@ export default function App() {
       title:'Honor',
       img:'Honor.png',
       desc:'Смартфон Honor 90 Emerald Green обладает AMOLED-экраном диагональю 6,7 дюйма разрешением 2664х1200 пикселей, отображается 1,07 млрд цветов. Дисплей скруглен по четырем сторонам, соотношение стороны —19.98:9.Восьмиядерный процессор Snapdragon 7 Gen 1 Accelerated Edition в сочетании с 12 Гб оперативной памяти обеспечивает высокую производительность и стабильную работу, в том числе в режиме многозадачности, дает возможность играть в современные «тяжелые» игры. Объем встроенной памяти — 512 Гб.',
-      category:'nothing',
+      category:'Honor',
       price:'44900'
     },
 
@@ -53,7 +55,7 @@ export default function App() {
       title:'Realme',
       img:'realme.png',
       desc:'Смартфон realme GT3 240W Pulse White представлен в стеклянном корпусе. В модель установлена операционная система Android 13 версии, восьмиядерный процессор Qualcomm Snapdragon 8+ Gen 1 3 ГГц, графический ускоритель Adreno 730. Модель характеризуется большим объемом встроенной памяти — 1 Тб. Емкость оперативной памяти — 16 Гб.Дисплей смартфона произведен с использованием технологии AMOLED. Его диагональ — 6,74 дюйма, разрешение 2772x1240 пикселей. Яркость экрана — 1370 кд/м². Кадры обновляются с максимальной частотой 144 Гц.',
-      category:'nothing',
+      category:'Realme',
       price:'59999'
     },
 
@@ -62,7 +64,7 @@ export default function App() {
       title:'TECNO',
       img:'Tecno.png',
       desc:'Смартфон Tecno Spark 20 Pro+ Black — это большой 6,78-дюймовый IPS-экран разрешением 1080x2436 пикселей и высокая производительность, которая обеспечивается восьмиядерным процессором Mediatek Helio G99 и 8 Гб ОЗУ.',
-      category:'nothing',
+      category:'TECNO',
       price:'21999'
     },
 
@@ -71,7 +73,7 @@ export default function App() {
       title:'POCO',
       img:'Poco.png',
       desc:'Смартфон Poco X5 5G Black оснащен 6,67-дюймовым дисплеем, выполненным по технологии AMOLED. Разрешение составляет 2400х1080 пикселей, яркость — 700 нит (пиковая — 1200 нит), уровень контрастности — 4500000:1. Изображение детализированное, с насыщенными и реалистичными цветами. Частота обновления 120 Гц обеспечивает плавное отображение динамичного контента в видео и играх. Увеличенная точность сенсора пригодится геймерам.',
-      category:'nothing',
+      category:'POCO',
       price:'30190'
     },
 
@@ -80,7 +82,7 @@ export default function App() {
       title:'Samsung',
       img:'samsung.png',
       desc:'Смартфон Samsung Galaxy S24 Ultra 12/256GB Onyx Black дополнен искусственным интеллектом Galaxy AI, который позволяет быстро находить любые предметы с картинок в поиске Google, легко перемещать объекты на фотографиях и переводить речь на нужный язык во время разговора по телефону. Модель оснащена прочной титановой рамкой, устойчивой к ударам. Закаленное стекло защищает экран от царапин. Устройство можно погружать под воду на глубину до 1,5 м благодаря пылевлагозащите класса IP68.',
-      category:'nothing',
+      category:'Samsung',
       price:'146999'
     },
 
@@ -89,7 +91,7 @@ export default function App() {
       title:'Xiaomi',
       img:'xiaomi.png',
       desc:'Смартфон Xiaomi Redmi Note 13 Pro Lavender Purple обладает экраном диагональю 6,67 дюйма разрешением 2400x1080 пикселей, выполненным по технологии AMOLED. От царапин и потертостей его надежно защищает прочное стекло Corning Gorilla Glass 5. Быстрый доступ к телефону и защиту личных данных обеспечивает сканер отпечатка пальца, расположенный под экраном, авторизация возможна также по распознаванию лица.В основе этой модели — восьмиядерный процессор Mediatek Helio G99 и 12 Гб оперативной памяти, все процессы протекают бесперебойно даже в режиме многозадачности. Для установки приложений и хранения файлов предназначены 512 Гб встроенной памяти. При необходимости можно добавить карту microSD и увеличить хранилище (до 1 Тб).',
-      category:'nothing',
+      category:'Xiaomi',
       price:'37999'
     },
 
@@ -98,13 +100,23 @@ export default function App() {
       title:'Sony',
       img:'Sony.png',
       desc:'Смартфон Sony Xperia 5 III 8/256GB Green работает на восьмиядерном процессоре Qualcomm Snapdragon 888. Для хранения файлов используется 256 Гб встроенной памяти. Возможна установка карты microSDXC максимальной емкостью 1 Тб. Экран 6.1" оснащен дисплеем OLED. Встроенные стереодинамики обеспечивают высококачественное звучание. Три основные камеры с разрешением 12/12/12 МПикс позволяют снимать видео в 4K. Высокое качество фотографий создается за счет оптической и цифровой стабилизации и вспышки.',
-      category:'nothing',
+      category:'Sony',
       price:'99900'
     },
     
   ]);
 
   const[orders,setOrders]=useState([]);
+  const [currentItems, setCurrentitems]= useState([]);
+  const[showFullItem,setShowFullItem]=useState(false);
+  const[fullItem,setFullItem]= useState({});
+
+  useEffect(()=>{
+    setCurrentitems(items);
+
+
+
+  },[items]);
 
   const deleteOrder = (id) =>{
     setOrders(orders.filter((el)=>el.id!==id));
@@ -117,7 +129,20 @@ export default function App() {
     //setOrders([...orders,item]);
 
   }
+  const chooseCategory = (category)=>{
+    if(category==="all"){
+      setCurrentitems(items);
+    }
+      else{
+        setCurrentitems(items.filter((el)=>el.category===category));
 
+      }
+  }
+
+  const onShowItem=(item)=>{
+    setFullItem(item);
+    setShowFullItem(!showFullItem);
+  }
 
 
 
@@ -125,7 +150,9 @@ export default function App() {
   return (
     <div className="wrapper">
      <Header orders={orders} onDelete={deleteOrder}/>
-     <Items allItems={items} onAdd={addToOrder}/>
+     <Category chooseCategory={chooseCategory}/>
+     <Items allItems={currentItems} onShowItem={onShowItem} onAdd={addToOrder}/>
+     {showFullItem && <ShowFullItem onShowItem={onShowItem} onAdd={addToOrder} item={fullItem}/>}
      <Footer/>
      
     </div>
