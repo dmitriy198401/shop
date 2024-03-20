@@ -1,5 +1,5 @@
 import React from "react";
-import{useState, useEffect} from "react";
+import{useState, useEffect,createContext,useContext} from "react";
 import Header from "./component/Header";
 import Items from "./component/Items";
 import Footer from "./component/Footer";
@@ -8,8 +8,7 @@ import Orders from "./component/Orders";
 import Category from "./component/Category";
 import ShowFullItem from "./component/ShowFullItem";
 
-
-
+const AppContext = createContext();
 
 export default function App() {
 
@@ -107,15 +106,12 @@ export default function App() {
   ]);
 
   const[orders,setOrders]=useState([]);
-  const [currentItems, setCurrentitems]= useState([]);
+  const [currentItems, setCurrentItems]= useState([]);
   const[showFullItem,setShowFullItem]=useState(false);
   const[fullItem,setFullItem]= useState({});
 
   useEffect(()=>{
-    setCurrentitems(items);
-
-
-
+    setCurrentItems(items);
   },[items]);
 
   const deleteOrder = (id) =>{
@@ -131,10 +127,10 @@ export default function App() {
   }
   const chooseCategory = (category)=>{
     if(category==="all"){
-      setCurrentitems(items);
+      setCurrentItems(items);
     }
       else{
-        setCurrentitems(items.filter((el)=>el.category===category));
+        setCurrentItems(items.filter((el)=>el.category===category));
 
       }
   }
@@ -144,18 +140,35 @@ export default function App() {
     setShowFullItem(!showFullItem);
   }
 
-
-
-
   return (
+    <AppContext.Provider
+     value={
+       {
+         items,
+         setItems,
+         orders,
+         setOrders,
+         currentItems,
+         setCurrentItems,
+         showFullItem,
+         setShowFullItem,
+         fullItem,
+         setFullItem,
+         deleteOrder,
+         addToOrder,
+         chooseCategory,
+         onShowItem,
+       }
+      }
+    >
     <div className="wrapper">
-     <Header orders={orders} onDelete={deleteOrder}/>
-     <Category chooseCategory={chooseCategory}/>
-     <Items allItems={currentItems} onShowItem={onShowItem} onAdd={addToOrder}/>
-     {showFullItem && <ShowFullItem onShowItem={onShowItem} onAdd={addToOrder} item={fullItem}/>}
+     <Header/>
+     <Category/>
+     <Items/>
+     {showFullItem && <ShowFullItem/>}
      <Footer/>
-     
     </div>
+    </AppContext.Provider>
   );
 }
 
