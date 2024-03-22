@@ -1,6 +1,6 @@
 import React,{useContext} from "react";
 import styles from "./Category.module.scss";
-import{useAppContext} from "../../useAppContext";
+import{useAppContext} from "./../../useAppContext";
 
 export default function Category(){
 
