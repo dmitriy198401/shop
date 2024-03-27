@@ -1,5 +1,5 @@
 import React,{useState,useEffect,useContext} from "react";
-const AppContext= React.createContext();
+const AppContext= React.createContext<any>(null);
 
 export const useAppContext = () =>{
 
@@ -11,8 +11,8 @@ export const useAppContext = () =>{
     return context;
 }
 
-   const AppProvider = ({children}) =>{
-    const[items,setItems]=useState([
+   const AppProvider:React.FC<{children:React.ReactNode}> = ({children}) =>{
+    const[items,setItems]=useState<any[]>([
         {
           id:1,
           title:'DODGEE',
@@ -105,27 +105,27 @@ export const useAppContext = () =>{
         
       ]);
     
-      const[orders,setOrders]=useState([]);
-      const [currentItems, setCurrentItems]= useState([]);
-      const[showFullItem,setShowFullItem]=useState(false);
-      const[fullItem,setFullItem]= useState({});
+      const[orders,setOrders]=useState<any[]>([]);
+      const [currentItems, setCurrentItems]= useState<any[]>([]);
+      const[showFullItem,setShowFullItem]=useState<Boolean>(false);
+      const[fullItem,setFullItem]= useState<any>({});
     
       useEffect(()=>{
         setCurrentItems(items);
       },[items]);
     
-      const deleteOrder = (id) =>{
+      const deleteOrder = (id:number) =>{
         setOrders(orders.filter((el)=>el.id!==id));
       }
     
-      const addToOrder=(item)=>{
+      const addToOrder=(item:any)=>{
         if(!orders.some((el)=>el.id===item.id)){
         setOrders([...orders,item]);
         }
         //setOrders([...orders,item]);
     
       }
-      const chooseCategory = (category)=>{
+      const chooseCategory = (category:string)=>{
         if(category==="all"){
           setCurrentItems(items);
         }
@@ -135,9 +135,10 @@ export const useAppContext = () =>{
           }
       }
     
-      const onShowItem=(item)=>{
+      const onShowItem=(item:any)=>{
         setFullItem(item);
         setShowFullItem(!showFullItem);
+        console.log("ok");
       }
 
 
